@@ -14,6 +14,11 @@
 
 # jda-ktx
 
+[![MIT license](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](LICENSE)
+[![Maven Central](https://img.shields.io/maven-central/v/gay.solonovamax/jda-ktx.svg?style=for-the-badge&label=Maven%20Central)](https://search.maven.org/search?q=g:gay.solonovamax%20a:jda-ktx)
+[![Pure Kotlin](https://img.shields.io/badge/100%25-kotlin-blue.svg?style=for-the-badge)](https://kotlinlang.org/)
+[![Discord Server](https://img.shields.io/discord/871114669761372221?color=7389D8&label=Discord&logo=discord&logoColor=8fa3ff&style=for-the-badge)](https://discord.solonovamax.gay)
+
 Collection of useful Kotlin extensions for [JDA][1]. Great in combination with [kotlinx-coroutines][2] and [jda-reactor][3].
 
 ## Credit
