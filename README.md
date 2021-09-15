@@ -1,21 +1,68 @@
-
 [1]: https://github.com/dv8fromtheworld/jda
+
 [2]: https://github.com/kotlin/kotlinx.coroutines
+
 [3]: https://github.com/MinnDevelopment/jda-reactor
 
-[4]: https://github.com/MinnDevelopment/jda-ktx/tree/master/src/main/kotlin/dev/minn/jda/ktx/CoroutineEventManager.kt
+[4]: https://github.com/solonovamax/jda-ktx/tree/master/src/main/kotlin/dev/minn/jda/ktx/CoroutineEventManager.kt
+
 [5]: https://github.com/MinnDevelopment/jda-reactor/tree/master/src/main/java/club/minnced/jda/reactor/ReactiveEventManager.java
-[6]: https://github.com/MinnDevelopment/jda-ktx/tree/master/src/main/kotlin/dev/minn/jda/ktx/builder.kt
+
+[6]: https://github.com/solonovamax/jda-ktx/tree/master/src/main/kotlin/dev/minn/jda/ktx/builder.kt
+
+[7]: https://github.com/MinnDevelopment/jda-ktx
 
 # jda-ktx
 
-Collection of useful Kotlin extensions for [JDA][1].
-Great in combination with [kotlinx-coroutines][2] and [jda-reactor][3].
+Collection of useful Kotlin extensions for [JDA][1]. Great in combination with [kotlinx-coroutines][2] and [jda-reactor][3].
+
+## Credit
+
+This is a fork of [MinnDevelopment/jda-ktx][7], with changes that I am using for my bot.
+
+## Adding to your Project
+
+### Gradle
+
+```kotlin
+repositories {
+    mavenCentral()
+    maven("https://m2.dv8tion.net/releases")
+}
+
+dependencies {
+    implementation("net.dv8tion:JDA:${JDA_VERSION}")
+    implementation("gay.solonovamax:jda-ktx:${JDA_KTX_VERSION}")
+}
+```
+
+### Maven
+
+```xml
+<repository>
+    <id>dv8tion</id>
+    <name>m2-dv8tion</name>
+    <url>https://m2.dv8tion.net/releases</url>
+</repository>
+```
+
+```xml
+<dependency>
+  <groupId>net.dv8tion</groupId>
+  <artifactId>JDA</artifactId>
+  <version>$JDA_VERSION</version>
+</dependency>
+<dependency>
+  <groupId>gay.solonovamax</groupId>
+  <artifactId>jda-ktx</artifactId>
+  <version>$JDA_KTX_VERSION</version>
+</dependency>
+```
 
 ## Examples
 
-The most useful feature of this library is the [CoroutineEventManager][4] which adds the ability to use
-suspending functions in your event handlers.
+The most useful feature of this library is the [CoroutineEventManager][4] which adds the ability to use suspending functions in your event
+handlers.
 
 ```kotlin
 val jda = DefaultJDA("[your token here]") {
@@ -73,8 +120,7 @@ jda.onButton("hello") { // Button that says hello
 
 ### Coroutine Extensions
 
-I've added a few suspending extension functions to various JDA components.
-None of these extensions require the `CoroutineEventManager`!
+I've added a few suspending extension functions to various JDA components. None of these extensions require the `CoroutineEventManager`!
 
 To use `await<Event>` and `awaitMessage` the event manager must support either `EventListener` or `@SubscribeEvent`,
 the [`ReactiveEventManager`][5] and [`CoroutineEventManager`][4] both support this.
@@ -106,8 +152,9 @@ suspend fun <T, M: PaginationAction<T, M>> M.asFlow(scope: CoroutineScope = Glob
 
 ### Delegates
 
-This library implements [delegate properties](https://kotlinlang.org/docs/reference/delegated-properties.html) which can be used to safely keep references of JDA entities such as users/channels.
-These delegates can be used with the [`ref()`](https://github.com/MinnDevelopment/jda-ktx/tree/master/src/main/kotlin/dev/minn/jda/ktx/proxies.kt) extension function:
+This library implements [delegate properties](https://kotlinlang.org/docs/reference/delegated-properties.html) which can be used to safely
+keep references of JDA entities such as users/channels. These delegates can be used with
+the [`ref()`](https://github.com/MinnDevelopment/jda-ktx/tree/master/src/main/kotlin/dev/minn/jda/ktx/proxies.kt) extension function:
 
 ```kotlin
 class Foo(guild: Guild) {
@@ -129,7 +176,8 @@ object Listener : ListenerAdapter() {
 
 ### Embed- and MessageBuilders
 
-This library also provides some useful builder alternatives which can be used instead of the default `MessageBuilder` and `EmbedBuilder` from JDA.
+This library also provides some useful builder alternatives which can be used instead of the default `MessageBuilder` and `EmbedBuilder`
+from JDA.
 
 You can see both builders in [builders.kt][6].
 
@@ -195,51 +243,4 @@ val menu = SelectionMenu("menu:class") {
     option("Fire Mage", "mage-fire", emoji=FIRE_SPEC)
     option("Arcane Mage", "mage-arcane", emoji=ARCANE_SPEC)
 }
-```
-
-
-
-## Download
-
-### Gradle
-
-```gradle
-repositories {
-    mavenCentral()
-    maven("https://m2.dv8tion.net/releases")
-    maven("https://jitpack.io/")
-}
-
-dependencies {
-    implementation("net.dv8tion:JDA:${JDA_VERSION}")
-    implementation("com.github.minndevelopment:jda-ktx:${COMMIT}")
-}
-```
-
-### Maven
-
-```xml
-<repository>
-    <id>jitpack</id>
-    <name>jitpack</name>
-    <url>https://jitpack.io/</url>
-</repository>
-<repository>
-    <id>dv8tion</id>
-    <name>m2-dv8tion</name>
-    <url>https://m2.dv8tion.net/releases</url>
-</repository>
-```
-
-```xml
-<dependency>
-  <groupId>net.dv8tion</groupId>
-  <artifactId>JDA</artifactId>
-  <version>$JDA_VERSION</version>
-</dependency>
-<dependency>
-  <groupId>com.github.minndevelopment</groupId>
-  <artifactId>jda-ktx</artifactId>
-  <version>$COMMIT</version>
-</dependency>
 ```

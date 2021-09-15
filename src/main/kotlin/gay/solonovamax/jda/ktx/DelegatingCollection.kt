@@ -15,7 +15,7 @@
  *
  */
 
-package dev.minn.jda.ktx
+package gay.solonovamax.jda.ktx
 
 import java.util.function.Predicate
 

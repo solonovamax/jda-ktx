@@ -17,7 +17,7 @@
 
 @file:Suppress("MemberVisibilityCanBePrivate", "unused", "FunctionName")
 
-package dev.minn.jda.ktx
+package gay.solonovamax.jda.ktx
 
 import com.neovisionaries.ws.client.WebSocketFactory
 import net.dv8tion.jda.api.OnlineStatus

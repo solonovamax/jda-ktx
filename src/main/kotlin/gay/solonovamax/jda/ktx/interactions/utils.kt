@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.minn.jda.ktx.interactions
+package gay.solonovamax.jda.ktx.interactions
 
 import net.dv8tion.jda.api.entities.AbstractChannel
 import net.dv8tion.jda.api.entities.IMentionable

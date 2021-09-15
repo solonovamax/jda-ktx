@@ -15,7 +15,7 @@
  *
  */
 
-package dev.minn.jda.ktx
+package gay.solonovamax.jda.ktx
 
 import net.dv8tion.jda.api.utils.MemberCachePolicy
 

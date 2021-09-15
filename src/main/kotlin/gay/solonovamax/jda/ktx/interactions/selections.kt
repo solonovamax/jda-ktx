@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß, and the JDA contributors
+ * Copyright (c) 2021 Florian Spieß
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,9 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
-package dev.minn.jda.ktx.interactions
+package gay.solonovamax.jda.ktx.interactions
 
 import net.dv8tion.jda.api.entities.Emoji
 import net.dv8tion.jda.api.interactions.components.selections.SelectOption

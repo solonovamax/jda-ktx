@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.minn.jda.ktx
+package gay.solonovamax.jda.ktx
 
 import net.dv8tion.jda.api.events.GenericEvent
 

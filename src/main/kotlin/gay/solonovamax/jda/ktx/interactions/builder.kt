@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Florian Spieß
+ * Copyright (c) 2021 Florian Spieß
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,9 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
-package dev.minn.jda.ktx.interactions
+package gay.solonovamax.jda.ktx.interactions
 
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.entities.Guild
@@ -38,29 +39,39 @@ inline fun <reified T> Option(name: String, description: String, required: Boole
     return OptionData(type, name, description).setRequired(required).apply(builder)
 }
 
-inline fun CommandListUpdateAction.command(name: String, description: String, builder: CommandData.() -> Unit = {}) = addCommands(Command(name, description, builder))
-inline fun CommandData.subcommand(name: String, description: String, builder: SubcommandData.() -> Unit = {}) = addSubcommands(Subcommand(name, description, builder))
-inline fun SubcommandGroupData.subcommand(name: String, description: String, builder: SubcommandData.() -> Unit = {}) = addSubcommands(Subcommand(name, description, builder))
-inline fun CommandData.group(name: String, description: String, builder: SubcommandGroupData.() -> Unit = {}) = addSubcommandGroups(SubcommandGroup(name, description, builder))
+inline fun CommandListUpdateAction.command(name: String, description: String, builder: CommandData.() -> Unit = {}) = addCommands(
+        Command(name, description, builder))
+inline fun CommandData.subcommand(name: String, description: String, builder: SubcommandData.() -> Unit = {}) = addSubcommands(
+        Subcommand(name, description, builder))
+inline fun SubcommandGroupData.subcommand(name: String, description: String, builder: SubcommandData.() -> Unit = {}) = addSubcommands(
+        Subcommand(name, description, builder))
+inline fun CommandData.group(name: String, description: String, builder: SubcommandGroupData.() -> Unit = {}) = addSubcommandGroups(
+        SubcommandGroup(name, description, builder))
 
-inline fun <reified T> CommandData.option(name: String, description: String, required: Boolean = false, builder: OptionData.() -> Unit = {}) = addOptions(Option<T>(name, description, required, builder))
-inline fun <reified T> SubcommandData.option(name: String, description: String, required: Boolean = false, builder: OptionData.() -> Unit = {}) = addOptions(Option<T>(name, description, required, builder))
+inline fun <reified T> CommandData.option(name: String, description: String, required: Boolean = false, builder: OptionData.() -> Unit = {}) = addOptions(
+        Option<T>(name, description, required, builder))
+inline fun <reified T> SubcommandData.option(name: String, description: String, required: Boolean = false, builder: OptionData.() -> Unit = {}) = addOptions(
+        Option<T>(name, description, required, builder))
 
 fun CommandListUpdateAction.command(name: String, description: String) = addCommands(Command(name, description) {})
 fun CommandData.subcommand(name: String, description: String) = addSubcommands(Subcommand(name, description) {})
 fun SubcommandGroupData.subcommand(name: String, description: String) = addSubcommands(Subcommand(name, description) {})
 fun CommandData.group(name: String, description: String) = addSubcommandGroups(SubcommandGroup(name, description) {})
 
-inline fun <reified T> CommandData.option(name: String, description: String, required: Boolean = false) = addOptions(Option<T>(name, description, required) {})
-inline fun <reified T> SubcommandData.option(name: String, description: String, required: Boolean = false) = addOptions(Option<T>(name, description, required) {})
+inline fun <reified T> CommandData.option(name: String, description: String, required: Boolean = false) = addOptions(
+        Option<T>(name, description, required) {})
+inline fun <reified T> SubcommandData.option(name: String, description: String, required: Boolean = false) = addOptions(
+        Option<T>(name, description, required) {})
 
 fun OptionData.choice(name: String, value: String) = addChoice(name, value)
 fun OptionData.choice(name: String, value: Int) = addChoice(name, value)
 
 inline fun JDA.updateCommands(builder: CommandListUpdateAction.() -> Unit) = updateCommands().apply(builder)
-inline fun JDA.upsertCommand(name: String, description: String, builder: CommandData.() -> Unit) = upsertCommand(Command(name, description, builder))
+inline fun JDA.upsertCommand(name: String, description: String, builder: CommandData.() -> Unit) = upsertCommand(
+        Command(name, description, builder))
 inline fun Guild.updateCommands(builder: CommandListUpdateAction.() -> Unit) = updateCommands().apply(builder)
-inline fun Guild.upsertCommand(name: String, description: String, builder: CommandData.() -> Unit) = upsertCommand(Command(name, description, builder))
+inline fun Guild.upsertCommand(name: String, description: String, builder: CommandData.() -> Unit) = upsertCommand(
+        Command(name, description, builder))
 
 inline fun Command.editCommand(builder: CommandData.() -> Unit) = editCommand().apply(CommandData(name, description).apply(builder))
 
